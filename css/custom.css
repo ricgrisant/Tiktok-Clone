@@ -1,0 +1,56 @@
+.btn-login{
+    background-color: #FF2C55;
+    width: 150px;
+    border-radius: 3px;
+    color: white;
+}
+
+.user-prof{
+    width:50px
+}
+
+.user-prof-min{
+    width:30px
+}
+
+.usr-follow{
+    height: 30px;
+    font-size: 12px;
+    width: 80px;
+    font-weight: 600;
+}
+
+.share-link{
+    background-color: #ff2c55;
+    color: white;
+    border-radius: 25px;
+}
+
+.wha-link{
+    background-color: #4BD97F;
+    color: white;
+    border-radius: 25px;
+}
+.face-link{
+    background-color: #0075FA;
+    color: white;
+    border-radius: 25px;
+}
+.twit-link{
+    background-color: #4CB3F3;
+    color: white;
+    border-radius: 25px;
+}
+
+@media only screen and (max-width: 576px) {
+    .home{
+        display:none;
+    }
+
+    .tiktoks{
+        width: 100%;
+    }
+    .follow{
+        display:none;
+    }
+  }

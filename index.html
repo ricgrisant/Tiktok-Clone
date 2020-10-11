@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tiktok</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/all.css"><!--FontAwesome-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="tiktoklogo2.svg" alt="">
+            <img src="tiktoklogo.svg" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+            <div class="form-inline my-2 my-lg-0">
+                <div>
+                    <a data-toggle="modal" data-target="#modalNuevoTiktok"><i class="fas fa-cloud-upload-alt fa-lg"></i></a>                  
+                </div>
+                <div>
+                    <a data-toggle="modal" data-target="#modalLogin" style="color: white;" class="btn btn-login ml-4 my-2 my-sm-0" type="submit">login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+        
+    <div class="container-fluid">
+        <div class="row">
+            <!---Side Bar-->
+            <div style="color: #FF2C55;" class="home no-float col-0 col-xs-2 col-sm-2">
+                <div class="row">
+                    <div class="col">
+                        <i class="fas fa-home fa-lg"></i>
+                        <spam>For You</spam> 
+                    </div>     
+                </div>
+
+                <div class="row pt-4">
+                    <div class="col">
+                        <i class="fas fa-user-friends fa-lg"></i>
+                        <spam style="color: grey;">Following</spam> 
+                    </div>     
+                </div>
+
+                <div class="row pt-5">
+                    <div class="col-12">
+                        <p>Inicia sesión para seguir a autores, dar un me gusta a videos y ver comentarios</p>
+                    </div>
+                    <div class="col-12">
+                        <button data-toggle="modal" data-target="#modalNuevaCuenta"  type="button" class="btn btn-outline-danger">
+                            Crear Cuenta
+                        </button> 
+                    </div>     
+                </div>
+            </div>
+
+            <!-- Videos de los tiktoks-->
+            <div class="tiktoks col-12 col-xs-8 col-sm-7">
+                <div id="cobtainerTiktoks" class="container">
+                  
+                </div>
+                
+            </div>
+<!-- Fin Videos de los tiktoks-->
+
+<!-- Suggested accounts-->
+            <div class="follow col-0 col-xs-3 col-sm-3">
+                <div class="row">
+                    <a class="m-2 share-link" href="#"><i class="m-2 fas fa-link"></i></a>
+                    <a class="m-2 wha-link" href="#"><i class="m-2 fab fa-whatsapp"></i></a>
+                    <a class="m-2 face-link" href="#"><i class="m-2 fab fa-facebook-square"></i></a>
+                    <a class="m-2 twit-link" href="#"><i class="m-2 fab fa-twitter-square"></i></a>
+                </div>
+                <div class="row">
+                    <h4 class="mt-5">Suggested accounts</h4>
+                </div>
+                <div id="usuariosRegistrados">
+                    
+                </div>
+
+                <div class="row">
+                    <h4 class="mt-5">Discover</h4>
+                </div>
+                <div class="row">
+                    <div class="col-10">
+                        <b>#Dogs</b>
+                        <p>1.3M of views</p>
+                    </div>
+                    <div class="col-2">
+                        <a href="#"><i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+<!-- Fin Suggested accounts-->
+    </div>
+</div>
+<!---Fin de container-->
+
+<!-- Modal Login-->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row no-gutter">
+              <div class="col">
+                <div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-9 col-lg-8 mx-auto">
+                        <h3 class="text-center login-heading mb-4">Login</h3>
+                        <form>
+                          <div class="form-label-group">
+                            <label for="inputEmail">Usuario</label>
+                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>                          
+                          </div>
+          
+                          <div class="form-label-group">
+                            <label for="inputPassword">Contraseña</label>
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                          </div>
+
+                          <div class="text-center mt-4 form-label-group">
+                            <button class="btn btn-login ml-4 my-2 my-sm-0" type="submit">login</button>                             
+                          </div>
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Nueva Cuenta-->
+<div class="modal fade" id="modalNuevaCuenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row no-gutter">
+              <div class="col">
+                <div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-9 col-lg-8 mx-auto">
+                        <h3 class="text-center login-heading mb-4">Login</h3>
+                        <form>
+                          <div class="form-label-group">
+                            <label for="inputEmail">Usuario</label>
+                            <input type="text" id="inputEmailCreaUsr" class="form-control" placeholder="Nombre de Usuario" required>                          
+                          </div>
+          
+                          <div class="form-label-group">
+                            <label for="inputPassword">Contraseña</label>
+                            <input type="password" id="inputPasswordCreaUsr" class="form-control" placeholder="Password" required>
+                          </div>
+
+                          <div class="form-label-group">
+                            <label for="inputPassword">Confirmar Contraseña</label>
+                            <input type="password" id="inputPassword2CreaUsr" class="form-control" placeholder="Password" required>
+                          </div>
+
+                          <div class="text-center mt-4 form-label-group">
+                            <label for="inputPassword">Imagen de Perfil</label>
+                            <div class="row">
+                                <div class="col-2 m-1">
+                                    <img onclick="imgSelecCreaUsr(this.src)" class="user-prof rounded-circle" src="profile-pics/goku.jpg" alt="">
+                                </div>
+                                <div class="col-2 m-1">
+                                    <img onclick="imgSelecCreaUsr(this.src)" class="user-prof rounded-circle" src="profile-pics/goku.jpg" alt="">
+                                </div>
+                                <div class="col-2 m-1">
+                                    <img onclick="imgSelecCreaUsr(this.src)" class="user-prof rounded-circle" src="profile-pics/goku.jpg" alt="">
+                                </div>
+                                <div class="col-2 m-1">
+                                    <img onclick="imgSelecCreaUsr(this.src)" class="user-prof rounded-circle" src="profile-pics/goku.jpg" alt="">
+                                </div>
+                                <div class="col-2 m-1">
+                                    <img onclick="imgSelecCreaUsr(this.src)" class="user-prof rounded-circle" src="profile-pics/goku.jpg" alt="">
+                                </div>
+                              </div>
+                          </div>
+
+                          <div class="text-center mt-4 form-label-group">
+                            <button onclick="getDataCreaUsr()" class="btn btn-login ml-4 my-2 my-sm-0" type="submit">Crear Cuenta</button>                             
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Nuevo Tiktok-->
+<div class="modal fade" id="modalNuevoTiktok" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row no-gutter">
+              <div class="col">
+                <div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-9 col-lg-8 mx-auto">
+                        <h3 class="text-center login-heading mb-4">Nuevo Tiktok</h3>
+                        <form>
+                          <div class="form-label-group">
+                            <label for="exampleFormControlSelect1">Video</label>
+                            <select class="form-control" id="videosSelect">
+                                <option>Seleccionar Videos</option>
+                            </select>
+                          </div>
+          
+                          <div class="form-label-group">
+                            <label>HashTags</label>
+                            <input type="text" id="agrHashtag" class="form-control" placeholder="HashTags" required>
+                          </div>
+
+                          <div class="form-label-group">
+                            <label>Mensaje</label>
+                            <input type="text" id="agrtiktitulo" class="form-control" placeholder="Mensaje" required>
+                          </div>
+
+                          <div class="text-center mt-4 form-label-group">
+                            <button type="submit" onclick="publicarTikTok()" class="btn btn-login ml-4 my-2 my-sm-0" >Publicar</button>                             
+                          </div>
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+              
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controlador.js"></script>
+</body>
+</html>
