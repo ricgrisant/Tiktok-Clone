@@ -28,8 +28,7 @@
                 <div>
                     <a data-toggle="modal" data-target="#modalNuevoTiktok"><i class="fas fa-cloud-upload-alt fa-lg"></i></a>                  
                 </div>
-                <div>
-                    <a data-toggle="modal" data-target="#modalLogin" style="color: white;" class="btn btn-login ml-4 my-2 my-sm-0" type="submit">login</a>
+                <div id="loginDiv">
                 </div>
             </div>
         </div>
@@ -124,16 +123,16 @@
                         <form>
                           <div class="form-label-group">
                             <label for="inputEmail">Usuario</label>
-                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>                          
+                            <input type="text" id="logUsr" class="form-control" placeholder="Usuario" required>                          
                           </div>
           
                           <div class="form-label-group">
                             <label for="inputPassword">Contraseña</label>
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            <input type="password" id="logPassword" class="form-control" placeholder="Password" required>
                           </div>
 
                           <div class="text-center mt-4 form-label-group">
-                            <button class="btn btn-login ml-4 my-2 my-sm-0" type="submit">login</button>                             
+                            <button id="btn-logIn" onclick="logIn(event)" class="btn btn-login ml-4 my-2 my-sm-0">login</button>                             
                           </div>
 
                         </form>
