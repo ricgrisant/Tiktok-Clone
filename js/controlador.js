@@ -15,6 +15,18 @@ if (localStorage.getItem('usuarios') == null) {
     usuarios = JSON.parse(localStorage.getItem('usuarios'));
 }
 
+/** Asegurarse de que no exista info en localstorage*/
+if (localStorage.getItem('hashtags') == null) {
+    const hashtags = [{
+        hashtag: 'Dogs',
+        videos: 1000000000
+    }];
+
+    localStorage.setItem('hashtags', JSON.stringify(hashtags));
+} else {
+    hashtags = JSON.parse(localStorage.getItem('hashtags'));
+}
+
 /** Asegurarse de que no exista tiktoks en localstorage */
 if (localStorage.getItem('tiktoks') == null) {
     const tiktoks = [{
@@ -59,8 +71,8 @@ if (localStorage.getItem('varLogueo') == null) {
  */
 
 var divLogin = document.getElementById("loginDiv")
-varLogueo.logState ? (divLogin.innerHTML='<a onClick="cerrarSesion()" style="color: white;" class="btn btn-login ml-4 my-2 my-sm-0">Cerrar Sesión</a>')
-:(divLogin.innerHTML='<a data-toggle="modal" data-target="#modalLogin" style="color: white;" class="btn btn-login ml-4 my-2 my-sm-0" type="submit">Login</a>')
+varLogueo.logState ? (divLogin.innerHTML = '<a onClick="cerrarSesion()" style="color: white;" class="btn btn-login ml-4 my-2 my-sm-0">Cerrar Sesión</a>') :
+    (divLogin.innerHTML = '<a data-toggle="modal" data-target="#modalLogin" style="color: white;" class="btn btn-login ml-4 my-2 my-sm-0" type="submit">Login</a>')
 
 /** Introducir Usuarios */
 
@@ -118,8 +130,9 @@ var regUsr = document.getElementById('usuariosRegistrados');
 regUsr.innerHTML = '';
 
 usuarios.forEach(element => {
-    return regUsr.innerHTML +=
-        `<div id="usuariosRegistrados" class="row">
+    if (element.usuario != varLogueo.usuario) {
+        return regUsr.innerHTML +=
+            `<div id="usuariosRegistrados" class="row">
             <div class="col-2">
             <img  class="user-prof-min rounded-circle" src="profile-pics/goku.jpg" alt="">
         </div>
@@ -133,6 +146,7 @@ usuarios.forEach(element => {
             </button>
         </div>
         </div>`
+    }
 });
 
 /** Introducir tiktoks */
@@ -269,8 +283,8 @@ function imprimeToksLog() {
     /** Borramos los usuarios anteriores*/
     tiktoksPost.innerHTML = '';
     var siguiendo = getSiguiendo(varLogueo.usuario)
-     siguiendo.forEach(elementSig => {
-        tiktoks.forEach(element =>{
+    siguiendo.forEach(elementSig => {
+        tiktoks.forEach(element => {
             if (element.usuario === elementSig) {
                 return tiktoksPost.innerHTML +=
                     `<div class="row">
@@ -332,9 +346,75 @@ const logIn = (event) => {
     });
 }
 
-const cerrarSesion = () =>{
+const cerrarSesion = () => {
     varLogueo.logState = false
     varLogueo.usuario = ''
     localStorage.setItem('varLogueo', JSON.stringify(varLogueo));
     location.reload()
+}
+
+/**Si el usuario da click a un hashtag de la sección lateral 
+ * inferior derecha entonces se mostrarán todos los tiktoks
+ * con dicho hashtag */
+var divHash = document.getElementById("rowHashtags")
+divHash.innerHTML = ''
+hashtags.forEach(element => {
+    return divHash.innerHTML +=
+        `<div onclick="mostrarVideoshash(${"'" + element.hashtag + "'"})" class="row row-hash">
+        <div class="col-10">
+            <b>#${element.hashtag}</b>
+            <p>${element.videos}</p>
+        </div>
+        <div class="d-flex align-items-center col-2 col-2">
+            <a href="#"><i class="fas fa-angle-right"></i></a>
+        </div>
+    </div>`
+});
+
+
+const mostrarVideoshash = (hash) => {
+    var tiktoksPost = document.getElementById('cobtainerTiktoks');
+    /** Borramos los usuarios anteriores*/
+    tiktoksPost.innerHTML = '';
+    for (let j = 0; j < tiktoks.length; j++) {
+        for (let i = 0; i < tiktoks[j].hashtags.length; i++) {
+            if (tiktoks[j].hashtags[i] === hash) {
+                tiktoksPost.innerHTML +=
+                    `<div class="row">
+            <div class="col-2">
+                <img  class="user-prof rounded-circle" src="profile-pics/goku.jpg" alt="">
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <b>@goku</b>
+                    <p class="ml-2">Son Goku</p>
+                </div>
+                <div class="row">
+                    <p class="ml-2">#Dog</p>
+                    <p class="ml-2">#Freezer</p>
+                    <p class="ml-2">${tiktoks[j].titulo}</p>
+                </div>
+                <div class="row">
+                    <i class="fab fa-itunes-note"></i>
+                    <p class="ml-2">Titulo del tema</p>
+                </div>
+            </div>
+            <div class="col-2">
+                <button type="button" class="usr-follow btn btn-outline-danger">
+                    Follow
+                </button>
+            </div>
+        </div>
+        <div style=" text-align: end; " class="row">
+            <div class="col-10">
+                <video width="320" height="450" controls src=${tiktoks[j].video}>
+                </video>
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>`
+            }
+        }
+    }
 }
